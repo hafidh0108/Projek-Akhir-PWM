@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- viewport digunakan untuk desain web yang responsif, width=device-width artinya web akan mengikuti lebar 
+    dari layar perangkat yang digunakan, dan initial-scale=1 artinya web akan diberikan skala (zoom) menjadi 1 (normal) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="manifest" href="manifest.json">
+  <title>Web Profil</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    [class*="col-"] {
+      float: left;
+      padding-top: 10px;
+      padding-right: 10px;
+      padding-bottom: 10px;
+      padding-left: 10px;
+    }
+
+    .row::after {
+      content: "";
+      clear: both;
+      display: block;
+    }
+
+    /* script css di bawah ini digunakan untuk mengatur class header, yaitu bagian atas dari webnya */
+    .header {
+      background-color: #1e90ff;
+      padding: 15px;
+      color: #ffffff;
+      border-radius: 0px;
+      border: 1px solid #989898;
+    }
+
+    /* script css di bawah ini digunakan untuk mengatur class footer, atau kakinya */
+    .footer {
+      background-color: #1e90ff;
+      color: #ffffff;
+      text-align: center;
+      font-size: 1.2em;
+      padding: 15px;
+      border-radius: 0px;
+      border: 1px solid #989898;
+    }
+
+    /* script css di bawah ini digunakan untuk mengatur tampilan bar */
+    .well {
+      background-color: #40e0d0;
+      border: 1px solid #989898;
+      border-radius: 5px;
+      padding: 10px;
+    }
+
+    /* script css di bawah ini digunakan untuk mengatur tampilan dari kontenya */
+    #main {
+      min-height: 500px;
+      background-color: #f0f8ff;
+      padding: 10px;
+      border: 1px solid #989898;
+    }
+
+    /* script dibawah ini untuk mengatur ukuran dari tag img (image/gambar), jadi ukuran lebarnya akan 100% terus dan tingginya otomatis */
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* script dibawah ini digunakan untuk mengatur break point pada tampilan mobile */
+    [class*="col-"] {
+      width: 100%;
+    }
+
+    /* media query di bawah yang min-widht nya 768 digunakan untuk tampilan desktop  */
+    @media only screen and (min-width: 768px) {
+
+      /* script css dibawah ini adalah untuk mengatur lebar dari grid dan breakpoint yang digunakan ketika tampilan desktop */
+      .col-1 {
+        width: 8.33%;
+      }
+
+      .col-2 {
+        width: 16.66%;
+      }
+
+      .col-3 {
+        width: 25%;
+      }
+
+      .col-4 {
+        width: 33.33%;
+      }
+
+      .col-5 {
+        width: 41.66%;
+      }
+
+      .col-6 {
+        width: 50%;
+      }
+
+      .col-7 {
+        width: 58.33%;
+      }
+
+      .col-8 {
+        width: 66.66%;
+      }
+
+      .col-9 {
+        width: 75%;
+      }
+
+      .col-10 {
+        width: 83.33%;
+      }
+
+      .col-11 {
+        width: 91.66%;
+      }
+
+      .col-12 {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- script di bawah ini adalah header -->
+  <div class="header">
+    <h1 align="center">Web - Hafidh Difa Al Haq</h1>
+  </div>
+
+  <!-- script di bawah ini adalah main, atau konten intinya -->
+  <div class="row" id="main">
+    <div class="col-3">
+      <div class="well">
+        MENU
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="profil.html">Profil</a></li>
+          <li><a href="#">Pendidikan</a></li>
+          <li><a href="#">Pengalaman</a></li>
+          <li><a href="#">Keahlian</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="well">
+        <h3>Deskripsi</h3>
+        <p id="deskripsi" style="text-align:justify">
+          Deskripsi akan muncul dalam 3 detik
+        </p>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="well">
+        POST
+        <ul>
+          <li>Post 1</li>
+          <li>Post 2</li>
+          <li>Post 3</li>
+          <li>Post 4</li>
+          <li>Post 5</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- script di bawah ini adalah untuk tampilan footernya -->
+  <div class="footer">
+    <p>Fb : Hafidh Difa Al Haq, IG : hafidh.d.a</p>
+  </div>
+  <script>
+    (function() {
+      // mengecek apakah browser support dengan service worker atau tidak
+      if ('serviceWorker' in navigator) {
+        // while page loaded
+        window.addEventListener('load', function() {
+          // melakukan registrasi service worker
+          navigator.serviceWorker.register('sw.js').then(function(reg) {
+            console.log('service worker installation success on: ', reg.scope)
+          }, function(err) {
+            console.log('service worker installation failed', err)
+          })
+        })
+      }
+    }())
+
+    // untuk mereplace tulisan pada id deskripsi yang akan muncul setelah 3 detik
+    let myPromise = new Promise(function(myResolve, myReject) {
+      setTimeout(function() {
+        myResolve("Saya adalah seorang mahasiswa di STMIK AKAKOM YOGYAKARTA kelas karyawan jurusan Informatika. Saya sangat senang sekali belajar tentang hal baru, terutama tentang pemrograman. Saya sangat senang belajar dari pengalaman orang lain dan saya juga sangat senang berbagi pengalaman dengan orang lain");
+      }, 3000);
+    });
+
+    myPromise.then(function(value) {
+      document.getElementById("deskripsi").innerHTML = value;
+    });
+  </script>
+</body>
+
+</html>

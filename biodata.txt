@@ -1,0 +1,6 @@
+<li>Nama : Hafidh Difa Al Haq</li>
+<li>TTL : Kebumen, 01 Agustus 1999</li>
+<li>Alamat : Jaranan, Banguntapan, Bantul, DIY</li>
+<li>Jenis Kelamin : Laki - Laki</li>
+<li>Agama : Islam</li>
+<li>Golongan Darah : B</li>
